@@ -1,17 +1,15 @@
 import type { MetadataRoute } from "next";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br";
-
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
-      url: SITE_URL,
+      url: "https://captai-landing.vercel.app",
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
-      url: `${SITE_URL}/captai`,
+      url: "https://captai-landing.vercel.app/captai",
       lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.8,
