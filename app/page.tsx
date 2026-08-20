@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br";
+
 export const metadata: Metadata = {
   title: "Captaí — Agente de Atendimento com IA no WhatsApp",
   description:
@@ -10,15 +12,24 @@ export const metadata: Metadata = {
   },
 };
 
-const jsonLd = {
+const orgJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "JS Soluções — Captaí",
   description:
     "Agente de atendimento com IA para WhatsApp. Automatizamos a captação e conversão de clientes para qualquer negócio.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br",
+  url: SITE_URL,
   telephone: "+5511915032373",
   email: "devjuliama@gmail.com",
+  founder: {
+    "@type": "Person",
+    name: "Julia Maria dos Santos",
+  },
+  sameAs: [
+    "https://github.com/JuliaSTDev",
+    "https://www.linkedin.com/in/js-solu%C3%A7%C3%B5es-9a22b9426/",
+    "https://www.instagram.com/jssolucoes.ia/",
+  ],
   address: {
     "@type": "PostalAddress",
     addressCountry: "BR",
@@ -26,7 +37,6 @@ const jsonLd = {
   },
   serviceType: "Automação de atendimento WhatsApp com Inteligência Artificial",
   areaServed: "Brasil",
-  priceRange: "R$1200 implementação + R$600/mês",
   hasOfferCatalog: {
     "@type": "OfferCatalog",
     name: "Captaí — Agente IA WhatsApp",
@@ -38,8 +48,11 @@ const jsonLd = {
           name: "Implementação do Captaí",
           description: "Agente de atendimento com IA configurado para o funil do seu negócio. Resposta em menos de 30 segundos, qualificação e condução da negociação pelo WhatsApp.",
         },
-        price: "1200",
-        priceCurrency: "BRL",
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: "Sob consulta",
+          priceCurrency: "BRL",
+        },
       },
     ],
   },
@@ -93,6 +106,18 @@ const IconWA = () => (
   </svg>
 );
 
+const IconLinkedIn = () => (
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+  </svg>
+);
+
+const IconInstagram = () => (
+  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+  </svg>
+);
+
 // ─── Data ─────────────────────────────────────────────────────────────────────
 const PAINS = [
   {
@@ -132,7 +157,48 @@ const NICHOS = [
   { icon: "⚖️", name: "Serviços B2B" },
 ];
 
+const TRUST_STACK = ["n8n", "Groq Llama 4 Scout", "Google Gemini 2.5", "Evolution API (WhatsApp)", "PostgreSQL", "Redis"];
+
+const FAQS = [
+  {
+    q: "Quanto custa o Captaí?",
+    a: "O valor é calculado conforme a necessidade do seu negócio — complexidade do funil, número de etapas e integrações envolvidas. Não existe um pacote fechado: fazemos esse levantamento no diagnóstico gratuito e te passamos uma proposta sob medida.",
+  },
+  {
+    q: "Quanto tempo leva para implementar?",
+    a: "Até 7 dias úteis após o diagnóstico e o acesso ao WhatsApp do seu negócio, incluindo configuração do funil, testes e ajustes finais.",
+  },
+  {
+    q: "O Captaí funciona para qualquer tipo de negócio?",
+    a: "Sim. O agente é configurado especificamente para o funil de vendas de cada negócio — já implementamos para escola de idiomas e a arquitetura se adapta a clínicas, imobiliárias, academias, pet shops e serviços B2B.",
+  },
+  {
+    q: "Preciso trocar meu número de WhatsApp?",
+    a: "Não. O Captaí se conecta ao número que sua empresa já usa, via Evolution API (WhatsApp self-hosted), sem precisar migrar de número ou perder histórico de conversas.",
+  },
+  {
+    q: "O Captaí substitui minha equipe de vendas?",
+    a: "Não substitui — libera. O agente cuida da resposta inicial, qualificação e negociação. Sua equipe entra só quando o lead está pronto para fechar, com todo o contexto já coletado.",
+  },
+  {
+    q: "Como funciona a integração com meu sistema atual?",
+    a: "O Captaí registra leads, matrículas e agendamentos em um banco PostgreSQL próprio e pode ser integrado a CRMs e gateways de pagamento existentes durante a implementação.",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 const WA_LINK = "https://wa.me/5511915032373?text=Ol%C3%A1%2C+vim+pelo+site+e+quero+um+diagn%C3%B3stico+gratuito+do+Capta%C3%AD";
+const LINKEDIN_LINK = "https://www.linkedin.com/in/js-solu%C3%A7%C3%B5es-9a22b9426/";
+const INSTAGRAM_LINK = "https://www.instagram.com/jssolucoes.ia/";
 
 // ─── Components ───────────────────────────────────────────────────────────────
 function Navbar() {
@@ -145,6 +211,12 @@ function Navbar() {
             JS <span className="text-teal-light">Soluções</span>
           </span>
         </div>
+        <nav className="hidden lg:flex items-center gap-8 text-sm text-stone-400">
+          <a href="#como-funciona" className="hover:text-white transition-colors">Como funciona</a>
+          <Link href="/captai" className="hover:text-white transition-colors">Case</Link>
+          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          <a href="#quem-somos" className="hover:text-white transition-colors">Quem somos</a>
+        </nav>
         <a
           href={WA_LINK}
           target="_blank"
@@ -211,6 +283,21 @@ function Hero() {
             Ver o MVP em ação — caso real: escola de idiomas
             <IconArrow />
           </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TrustBar() {
+  return (
+    <section className="py-10 border-y border-white/5 bg-navy-light/30">
+      <div className="max-w-5xl mx-auto px-6">
+        <p className="text-center text-xs uppercase tracking-widest text-stone-500 mb-6">Tecnologia por trás do Captaí</p>
+        <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+          {TRUST_STACK.map((t) => (
+            <span key={t} className="text-sm font-medium text-stone-400">{t}</span>
+          ))}
         </div>
       </div>
     </section>
@@ -319,6 +406,67 @@ function HowItWorks() {
   );
 }
 
+function About() {
+  return (
+    <section id="quem-somos" className="py-24">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="grid lg:grid-cols-3 gap-10 items-start">
+          <div className="lg:col-span-1">
+            <span className="text-teal-light text-sm font-semibold uppercase tracking-widest mb-4 block">Quem está por trás</span>
+            <h2 className="text-2xl sm:text-3xl font-bold">JS Soluções</h2>
+          </div>
+          <div className="lg:col-span-2">
+            <p className="text-stone-400 leading-relaxed mb-6">
+              O Captaí é desenvolvido pela <strong className="text-white">JS Soluções</strong>, agência especializada
+              em automação de atendimento com Inteligência Artificial fundada por{" "}
+              <strong className="text-white">Julia Maria dos Santos</strong>. O MVP técnico que originou o produto
+              está documentado e disponível publicamente no GitHub — arquitetura, workflows n8n e decisões de
+              projeto, sem caixa-preta.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Link href="/captai" className="text-sm font-medium px-4 py-2 rounded-lg border border-white/10 text-stone-300 hover:border-white/20 hover:text-white transition-colors">
+                Ver case completo →
+              </Link>
+              <a
+                href="https://github.com/JuliaSTDev/n8n-matricula-whatsapp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium px-4 py-2 rounded-lg border border-white/10 text-stone-300 hover:border-white/20 hover:text-white transition-colors"
+              >
+                Código no GitHub →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQ() {
+  return (
+    <section id="faq" className="py-24 bg-navy-light/60">
+      <div className="max-w-3xl mx-auto px-6">
+        <div className="text-center mb-14">
+          <span className="text-teal-light text-sm font-semibold uppercase tracking-widest mb-4 block">Perguntas frequentes</span>
+          <h2 className="text-3xl sm:text-4xl font-bold">Tudo que você precisa saber antes de começar</h2>
+        </div>
+        <div className="space-y-3">
+          {FAQS.map((f) => (
+            <details key={f.q} className="group bg-navy border border-white/5 rounded-xl p-5 open:border-white/10">
+              <summary className="flex items-center justify-between gap-4 cursor-pointer font-semibold text-white list-none marker:content-none">
+                {f.q}
+                <span className="shrink-0 text-teal-light group-open:rotate-45 transition-transform text-xl leading-none">+</span>
+              </summary>
+              <p className="text-stone-400 text-sm leading-relaxed mt-3">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function CTA() {
   return (
     <section id="diagnostico" className="py-24">
@@ -365,20 +513,79 @@ function CTA() {
 
 function Footer() {
   return (
-    <footer className="border-t border-white/5 py-8">
-      <div className="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <div className="flex items-center gap-3">
-          <LogoMark size={24} />
-          <span className="text-sm text-stone-400">© {new Date().getFullYear()} JS Soluções · Captaí</span>
+    <footer className="border-t border-white/5 pt-16 pb-8">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <LogoMark size={28} />
+              <span className="font-bold text-lg tracking-tight">
+                JS <span className="text-teal-light">Soluções</span>
+              </span>
+            </div>
+            <p className="text-sm text-stone-500 leading-relaxed">
+              Agente de atendimento com IA no WhatsApp para negócios que não podem perder leads.
+            </p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 mb-4">Produto</p>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#como-funciona" className="text-stone-400 hover:text-white transition-colors">Como funciona</a></li>
+              <li><Link href="/captai" className="text-stone-400 hover:text-white transition-colors">Case de sucesso</Link></li>
+              <li><a href="#faq" className="text-stone-400 hover:text-white transition-colors">Perguntas frequentes</a></li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 mb-4">Empresa</p>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#quem-somos" className="text-stone-400 hover:text-white transition-colors">Quem somos</a></li>
+              <li>
+                <a href="https://github.com/JuliaSTDev/n8n-matricula-whatsapp" target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">
+                  GitHub
+                </a>
+              </li>
+              <li>
+                <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">
+                  LinkedIn
+                </a>
+              </li>
+              <li>
+                <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">
+                  Instagram
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 mb-4">Contato</p>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-stone-400 hover:text-white transition-colors">
+                  (11) 91503-2373
+                </a>
+              </li>
+              <li>
+                <a href="mailto:devjuliama@gmail.com" className="text-stone-400 hover:text-white transition-colors">
+                  devjuliama@gmail.com
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
-        <a
-          href={WA_LINK}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-stone-500 hover:text-stone-300 transition-colors flex items-center gap-2"
-        >
-          <IconWA /> (11) 91503-2373
-        </a>
+        <div className="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <span className="text-sm text-stone-500">© {new Date().getFullYear()} JS Soluções · Captaí</span>
+          <div className="flex items-center gap-5">
+            <a href={LINKEDIN_LINK} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-stone-500 hover:text-white transition-colors">
+              <IconLinkedIn />
+            </a>
+            <a href={INSTAGRAM_LINK} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-stone-500 hover:text-white transition-colors">
+              <IconInstagram />
+            </a>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="text-sm text-stone-500 hover:text-stone-300 transition-colors flex items-center gap-2">
+              <IconWA /> Falar no WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );
@@ -389,14 +596,21 @@ export default function Home() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Navbar />
       <main>
         <Hero />
+        <TrustBar />
         <Pains />
         <Solution />
         <HowItWorks />
+        <About />
+        <FAQ />
         <CTA />
       </main>
       <Footer />
