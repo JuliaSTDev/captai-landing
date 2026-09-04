@@ -3,12 +3,28 @@ import Link from "next/link";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br";
 
+const PAGE_TITLE = "Captaí — Caso Real: Escola de Idiomas | JS Soluções";
+const PAGE_DESCRIPTION =
+  "Como o agente 'Alex' automatizou 100% do funil de vendas de uma escola de idiomas — do lead ao contrato — via WhatsApp, n8n e Groq Llama 4 Scout, respondendo em menos de 2 segundos.";
+
 export const metadata: Metadata = {
-  title: "Captaí — Caso Real: Escola de Idiomas | JS Soluções",
-  description:
-    "Como o agente 'Alex' automatizou 100% do funil de vendas de uma escola de idiomas — do lead ao contrato — via WhatsApp, n8n e Groq Llama 4 Scout, respondendo em menos de 2 segundos.",
+  title: {
+    absolute: PAGE_TITLE,
+  },
+  description: PAGE_DESCRIPTION,
   alternates: {
     canonical: "/captai",
+  },
+  openGraph: {
+    type: "article",
+    url: `${SITE_URL}/captai`,
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
   },
 };
 
@@ -19,6 +35,18 @@ const breadcrumbJsonLd = {
     { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
     { "@type": "ListItem", position: 2, name: "Case: Escola de Idiomas", item: `${SITE_URL}/captai` },
   ],
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Captaí — Do \"Oi\" no WhatsApp à matrícula assinada",
+  description: PAGE_DESCRIPTION,
+  author: { "@type": "Person", name: "Julia Maria dos Santos" },
+  publisher: { "@type": "Organization", name: "JS Soluções" },
+  datePublished: "2026-06-01",
+  dateModified: "2026-08-06",
+  mainEntityOfPage: `${SITE_URL}/captai`,
 };
 
 function LogoMark({ size = 32 }: { size?: number }) {
@@ -141,6 +169,10 @@ export default function CaptaiCaseStudy() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
       />
 
       {/* Navbar */}
@@ -408,6 +440,12 @@ export default function CaptaiCaseStudy() {
               </svg>
             </a>
             <p className="mt-4 text-sm text-stone-500">Gratuito. Sem compromisso. Respondemos em até 1 hora.</p>
+            <p className="mt-8 text-sm text-stone-500">
+              Tem uma escola de idiomas ou curso?{" "}
+              <Link href="/escolas" className="text-teal-light hover:text-white transition-colors">
+                Veja a página dedicada pra esse nicho →
+              </Link>
+            </p>
           </div>
         </section>
 

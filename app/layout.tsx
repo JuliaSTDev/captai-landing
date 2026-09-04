@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -27,6 +27,8 @@ export const metadata: Metadata = {
     "whatsapp bot escola",
     "automação matrícula escola idiomas",
     "agente IA vendas",
+    "crm whatsapp",
+    "crm de whatsapp para empresas",
   ],
   authors: [{ name: "JS Soluções", url: SITE_URL }],
   creator: "JS Soluções",
@@ -67,10 +69,68 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#1C1917",
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "JS Soluções — Captaí",
+  description:
+    "Agente de atendimento com IA para WhatsApp. Automatizamos a captação e conversão de clientes para qualquer negócio.",
+  url: SITE_URL,
+  telephone: "+5511915032373",
+  email: "devjuliama@gmail.com",
+  founder: {
+    "@type": "Person",
+    name: "Julia Maria dos Santos",
+  },
+  sameAs: [
+    "https://github.com/JuliaSTDev",
+    "https://www.linkedin.com/in/js-solu%C3%A7%C3%B5es-9a22b9426/",
+    "https://www.instagram.com/jssolucoes.ia/",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "BR",
+    addressRegion: "SP",
+  },
+  serviceType: "Automação de atendimento WhatsApp com Inteligência Artificial",
+  areaServed: "Brasil",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Captaí — Agente IA WhatsApp",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Implementação do Captaí",
+          description: "Agente de atendimento com IA configurado para o funil do seu negócio. Resposta em menos de 30 segundos, qualificação e condução da negociação pelo WhatsApp.",
+        },
+        priceSpecification: {
+          "@type": "PriceSpecification",
+          price: "Sob consulta",
+          priceCurrency: "BRL",
+        },
+      },
+    ],
+  },
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }

@@ -1,60 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br";
-
 export const metadata: Metadata = {
   title: "Captaí — Agente de Atendimento com IA no WhatsApp",
   description:
     "Seu negócio respondendo leads e convertendo clientes no WhatsApp de forma automática. Agente com IA para escolas, clínicas, imobiliárias, academias e mais. Diagnóstico gratuito.",
   alternates: {
     canonical: "/",
-  },
-};
-
-const orgJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "JS Soluções — Captaí",
-  description:
-    "Agente de atendimento com IA para WhatsApp. Automatizamos a captação e conversão de clientes para qualquer negócio.",
-  url: SITE_URL,
-  telephone: "+5511915032373",
-  email: "devjuliama@gmail.com",
-  founder: {
-    "@type": "Person",
-    name: "Julia Maria dos Santos",
-  },
-  sameAs: [
-    "https://github.com/JuliaSTDev",
-    "https://www.linkedin.com/in/js-solu%C3%A7%C3%B5es-9a22b9426/",
-    "https://www.instagram.com/jssolucoes.ia/",
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressCountry: "BR",
-    addressRegion: "SP",
-  },
-  serviceType: "Automação de atendimento WhatsApp com Inteligência Artificial",
-  areaServed: "Brasil",
-  hasOfferCatalog: {
-    "@type": "OfferCatalog",
-    name: "Captaí — Agente IA WhatsApp",
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "Implementação do Captaí",
-          description: "Agente de atendimento com IA configurado para o funil do seu negócio. Resposta em menos de 30 segundos, qualificação e condução da negociação pelo WhatsApp.",
-        },
-        priceSpecification: {
-          "@type": "PriceSpecification",
-          price: "Sob consulta",
-          priceCurrency: "BRL",
-        },
-      },
-    ],
   },
 };
 
@@ -149,7 +101,7 @@ const STEPS = [
 ];
 
 const NICHOS = [
-  { icon: "🎓", name: "Escolas e cursos", badge: "Case real" },
+  { icon: "🎓", name: "Escolas e cursos", badge: "Case real", href: "/escolas" },
   { icon: "🏥", name: "Clínicas e consultórios" },
   { icon: "🏠", name: "Imobiliárias" },
   { icon: "💪", name: "Academias e studios" },
@@ -181,8 +133,8 @@ const FAQS = [
     a: "Não substitui — libera. O agente cuida da resposta inicial, qualificação e negociação. Sua equipe entra só quando o lead está pronto para fechar, com todo o contexto já coletado.",
   },
   {
-    q: "Como funciona a integração com meu sistema atual?",
-    a: "O Captaí registra leads, matrículas e agendamentos em um banco PostgreSQL próprio e pode ser integrado a CRMs e gateways de pagamento existentes durante a implementação.",
+    q: "O Captaí funciona com CRM?",
+    a: "Depende do que o seu negócio precisa. Se você já usa um CRM (HubSpot, RD Station, Pipedrive etc.), o Captaí se integra a ele. Se você não usa nenhum, registramos leads, fase do funil e histórico direto num painel simples — sem te obrigar a pagar por uma ferramenta que não faz falta. A gente monta em cima do que já existe no seu negócio, não empurra um pacote fechado.",
   },
 ];
 
@@ -355,22 +307,31 @@ function Solution() {
           <div className="bg-navy-light border border-white/5 rounded-3xl p-8">
             <p className="text-teal-lighter text-xs font-semibold uppercase tracking-widest mb-8 text-center">Funciona para qualquer nicho</p>
             <div className="grid grid-cols-2 gap-3">
-              {NICHOS.map((n) => (
-                <div
-                  key={n.name}
-                  className="rounded-xl p-4 text-center"
-                  style={{
-                    background: n.badge ? "rgba(234,88,12,0.08)" : "rgba(255,255,255,0.03)",
-                    border: n.badge ? "1px solid rgba(234,88,12,0.25)" : "1px solid rgba(255,255,255,0.06)",
-                  }}
-                >
-                  {n.badge && (
-                    <span className="block text-xs font-bold mb-1" style={{ color: "#EA580C" }}>{n.badge}</span>
-                  )}
-                  <div className="text-xl mb-1">{n.icon}</div>
-                  <div className="text-xs font-medium text-stone-300">{n.name}</div>
-                </div>
-              ))}
+              {NICHOS.map((n) => {
+                const cardClass = "rounded-xl p-4 text-center block" + (n.href ? " hover:border-white/40 transition-colors" : "");
+                const cardStyle = {
+                  background: n.badge ? "rgba(234,88,12,0.08)" : "rgba(255,255,255,0.03)",
+                  border: n.badge ? "1px solid rgba(234,88,12,0.25)" : "1px solid rgba(255,255,255,0.06)",
+                };
+                const content = (
+                  <>
+                    {n.badge && (
+                      <span className="block text-xs font-bold mb-1" style={{ color: "#EA580C" }}>{n.badge}</span>
+                    )}
+                    <div className="text-xl mb-1">{n.icon}</div>
+                    <div className="text-xs font-medium text-stone-300">{n.name}</div>
+                  </>
+                );
+                return n.href ? (
+                  <Link key={n.name} href={n.href} className={cardClass} style={cardStyle}>
+                    {content}
+                  </Link>
+                ) : (
+                  <div key={n.name} className={cardClass} style={cardStyle}>
+                    {content}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -594,10 +555,6 @@ function Footer() {
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
