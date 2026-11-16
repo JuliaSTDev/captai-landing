@@ -367,6 +367,45 @@ function HowItWorks() {
   );
 }
 
+function Implemented() {
+  const steps = [
+    "Busca notícias na internet",
+    "Reescreve com IA",
+    "Envia o rascunho pelo Telegram",
+    "Publica no Instagram e no WordPress",
+  ];
+  return (
+    <section id="projetos" className="py-24">
+      <div className="max-w-5xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <span className="text-teal-light text-sm font-semibold uppercase tracking-widest mb-4 block">Projeto implementado</span>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4">Automação e IA além do atendimento</h2>
+          <p className="text-stone-400 max-w-xl mx-auto">Além dos agentes de WhatsApp, criamos automações sob medida para processos do dia a dia.</p>
+        </div>
+        <div className="bg-navy border border-white/5 rounded-2xl p-8 flex flex-col md:flex-row gap-8 items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/bico-rural.png" alt="Logo do Bico Rural" width={120} height={120} className="rounded-full shrink-0" />
+          <div>
+            <h3 className="text-xl font-bold text-white mb-2">Bico Rural · publicação de notícias automatizada</h3>
+            <p className="text-stone-400 text-sm leading-relaxed mb-5">
+              A automação busca notícias, reescreve o texto com IA e envia o rascunho pelo Telegram.
+              O cliente só aprova, e a publicação sai sozinha no Instagram e no WordPress.
+            </p>
+            <ol className="grid sm:grid-cols-2 gap-3">
+              {steps.map((step, i) => (
+                <li key={step} className="flex gap-3 text-sm text-stone-300">
+                  <span className="text-teal-light font-semibold">{i + 1}.</span>
+                  {step}
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function About() {
   return (
     <section id="quem-somos" className="py-24">
@@ -566,6 +605,7 @@ export default function Home() {
         <Pains />
         <Solution />
         <HowItWorks />
+        <Implemented />
         <About />
         <FAQ />
         <CTA />
