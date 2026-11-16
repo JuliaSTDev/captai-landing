@@ -5,7 +5,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br";
 
 const PAGE_TITLE = "Agente de IA no WhatsApp para Escolas de Idiomas | Captaí";
 const PAGE_DESCRIPTION =
-  "Automatize a matrícula e o atendimento de leads da sua escola de idiomas ou curso no WhatsApp com IA. Caso real: resposta em menos de 2s, funil 100% automatizado. Diagnóstico gratuito.";
+  "Automatize a matrícula e o atendimento de leads da sua escola de idiomas ou curso no WhatsApp com IA. Veja a demonstração do funil de matrícula automatizado. Diagnóstico gratuito.";
 
 export const metadata: Metadata = {
   title: {
@@ -78,7 +78,7 @@ const faqJsonLd = {
       name: "Funciona só pra idiomas ou também pra outros tipos de curso?",
       acceptedAnswer: {
         "@type": "Answer",
-        text: "O caso real documentado é de uma escola de idiomas, mas a arquitetura do funil (sondagem, apresentação, negociação, matrícula) se adapta a qualquer curso ou escola livre — técnico, preparatório, música, esportes.",
+        text: "A demonstração documentada é de uma escola de idiomas, mas a arquitetura do funil (sondagem, apresentação, negociação, matrícula) se adapta a qualquer curso ou escola livre — técnico, preparatório, música, esportes.",
       },
     },
   ],
@@ -150,7 +150,7 @@ const FAQS = [
   { q: "Quanto custa automatizar a matrícula da minha escola?", a: "Varia conforme o tamanho do funil e as integrações necessárias (sistema de gestão, gateway de pagamento etc.). Fazemos esse levantamento no diagnóstico gratuito e te passamos uma proposta sob medida — não existe pacote fechado." },
   { q: "Funciona pra escola pequena, com poucos leads por mês?", a: "Sim. O agente é configurado pro volume e pro funil da sua escola — não existe um mínimo de leads pra fazer sentido. Escolas pequenas costumam sentir o impacto mais rápido, porque cada lead perdido pesa mais no caixa." },
   { q: "Dá pra integrar com o sistema de gestão escolar que eu já uso?", a: "Sim, avaliamos a integração durante o diagnóstico. O Captaí registra leads, matrículas e agendamentos em um banco próprio e pode se conectar ao seu sistema de gestão e ao gateway de pagamento existentes." },
-  { q: "Funciona só pra idiomas ou também pra outros tipos de curso?", a: "O caso real documentado é de uma escola de idiomas, mas a arquitetura do funil (sondagem, apresentação, negociação, matrícula) se adapta a qualquer curso ou escola livre — técnico, preparatório, música, esportes." },
+  { q: "Funciona só pra idiomas ou também pra outros tipos de curso?", a: "A demonstração documentada é de uma escola de idiomas, mas a arquitetura do funil (sondagem, apresentação, negociação, matrícula) se adapta a qualquer curso ou escola livre — técnico, preparatório, música, esportes." },
 ];
 
 const WA_LINK = "https://wa.me/5511915032373?text=Ol%C3%A1%2C+tenho+uma+escola%2Fcurso+e+quero+um+diagn%C3%B3stico+gratuito+do+Capta%C3%AD";
@@ -167,7 +167,7 @@ function Navbar() {
           </span>
         </Link>
         <nav className="hidden lg:flex items-center gap-8 text-sm text-stone-400">
-          <Link href="/captai" className="hover:text-white transition-colors">Case real</Link>
+          <Link href="/captai" className="hover:text-white transition-colors">Demonstração</Link>
           <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
         </nav>
         <a
@@ -217,7 +217,7 @@ export default function EscolasPage() {
             <p className="text-lg text-stone-400 max-w-2xl mb-10 leading-relaxed">
               O <strong className="text-white">Captaí</strong> conduz o aluno do primeiro "oi" no WhatsApp até a matrícula assinada —
               sondagem, apresentação do curso, negociação e pagamento — sem secretaria fazendo follow-up manual.
-              Já validado em produção numa escola de idiomas real.
+              Veja a demonstração completa em uma escola de idiomas.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4">
@@ -234,7 +234,7 @@ export default function EscolasPage() {
                 href="/captai"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl border border-white/10 text-stone-300 font-medium hover:bg-white/5 transition-colors"
               >
-                Ver o caso real completo
+                Ver a demonstração completa
               </Link>
             </div>
             <p className="mt-6 text-sm text-stone-500">Gratuito. Sem compromisso.</p>
@@ -288,7 +288,7 @@ export default function EscolasPage() {
                 href="/captai"
                 className="inline-flex items-center gap-2 text-sm text-teal-light hover:text-white transition-colors border border-white/10 px-4 py-2 rounded-lg hover:border-white/20"
               >
-                Ver os 7 workflows do caso real →
+                Ver os 7 workflows da demonstração →
               </Link>
             </div>
           </div>

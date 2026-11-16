@@ -101,7 +101,7 @@ const STEPS = [
 ];
 
 const NICHOS = [
-  { icon: "🎓", name: "Escolas e cursos", badge: "Case real", href: "/escolas" },
+  { icon: "🎓", name: "Escolas e cursos", badge: "Demonstração", href: "/escolas" },
   { icon: "🏥", name: "Clínicas e consultórios" },
   { icon: "🏠", name: "Imobiliárias" },
   { icon: "💪", name: "Academias e studios" },
@@ -165,7 +165,7 @@ function Navbar() {
         </div>
         <nav className="hidden lg:flex items-center gap-8 text-sm text-stone-400">
           <a href="#como-funciona" className="hover:text-white transition-colors">Como funciona</a>
-          <Link href="/captai" className="hover:text-white transition-colors">Case</Link>
+          <Link href="/captai" className="hover:text-white transition-colors">Demonstração</Link>
           <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
           <a href="#quem-somos" className="hover:text-white transition-colors">Quem somos</a>
         </nav>
@@ -232,7 +232,7 @@ function Hero() {
                 <path d="M8 5.14v14l11-7-11-7z" />
               </svg>
             </span>
-            Ver o MVP em ação — caso real: escola de idiomas
+            Ver o MVP em ação — demonstração: escola de idiomas
             <IconArrow />
           </Link>
         </div>
@@ -492,7 +492,7 @@ function Footer() {
             <p className="text-xs font-semibold uppercase tracking-widest text-stone-500 mb-4">Produto</p>
             <ul className="space-y-2 text-sm">
               <li><a href="#como-funciona" className="text-stone-400 hover:text-white transition-colors">Como funciona</a></li>
-              <li><Link href="/captai" className="text-stone-400 hover:text-white transition-colors">Case de sucesso</Link></li>
+              <li><Link href="/captai" className="text-stone-400 hover:text-white transition-colors">Demonstração</Link></li>
               <li><a href="#faq" className="text-stone-400 hover:text-white transition-colors">Perguntas frequentes</a></li>
             </ul>
           </div>

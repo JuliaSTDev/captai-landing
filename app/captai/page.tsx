@@ -3,9 +3,9 @@ import Link from "next/link";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://captai.com.br";
 
-const PAGE_TITLE = "Captaí — Caso Real: Escola de Idiomas | JS Soluções";
+const PAGE_TITLE = "Captaí — Demonstração: Escola de Idiomas | JS Soluções";
 const PAGE_DESCRIPTION =
-  "Como o agente 'Alex' automatizou 100% do funil de vendas de uma escola de idiomas — do lead ao contrato — via WhatsApp, n8n e Groq Llama 4 Scout, respondendo em menos de 2 segundos.";
+  "Demonstração de como o agente 'Alex' automatiza o funil de vendas de uma escola de idiomas — do lead ao contrato — via WhatsApp, n8n e Groq Llama 4 Scout, respondendo em menos de 2 segundos.";
 
 export const metadata: Metadata = {
   title: {
@@ -33,7 +33,7 @@ const breadcrumbJsonLd = {
   "@type": "BreadcrumbList",
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Início", item: `${SITE_URL}/` },
-    { "@type": "ListItem", position: 2, name: "Case: Escola de Idiomas", item: `${SITE_URL}/captai` },
+    { "@type": "ListItem", position: 2, name: "Demonstração: Escola de Idiomas", item: `${SITE_URL}/captai` },
   ],
 };
 
@@ -202,7 +202,7 @@ export default function CaptaiCaseStudy() {
           <ol className="flex items-center gap-2">
             <li><Link href="/" className="hover:text-stone-300 transition-colors">Início</Link></li>
             <li aria-hidden>/</li>
-            <li className="text-stone-300">Case: Escola de Idiomas</li>
+            <li className="text-stone-300">Demonstração: Escola de Idiomas</li>
           </ol>
         </nav>
 
@@ -214,7 +214,7 @@ export default function CaptaiCaseStudy() {
           />
           <div className="relative max-w-5xl mx-auto px-6">
             <div className="flex flex-wrap items-center gap-3 mb-6">
-              <span className="text-xs font-semibold uppercase tracking-widest text-teal-light">Case Study</span>
+              <span className="text-xs font-semibold uppercase tracking-widest text-teal-light">Demonstração</span>
               <span className="text-stone-600">·</span>
               <span className="text-xs text-stone-500">MVP v3.0 · Junho 2026</span>
               <span className="text-stone-600">·</span>
@@ -273,7 +273,7 @@ export default function CaptaiCaseStudy() {
                 <svg className="w-3.5 h-3.5 text-stone-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
                 </svg>
-                <p className="text-xs text-stone-500">Demo em ambiente de cliente parceiro — nome da escola preservado por acordo de confidencialidade.</p>
+                <p className="text-xs text-stone-500">Demonstração gravada em ambiente de testes. Ainda não está em produção em escolas.</p>
               </div>
             </div>
           </div>
